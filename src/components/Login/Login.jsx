@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./Login.css";
+import { Link } from 'react-router-dom';
 
 
 const Login = (props) => {
@@ -12,13 +13,12 @@ const Login = (props) => {
     const handleChange = (event) => {
         event.preventDefault();
         const { value, name } = event.target;
-        setInputValue((val) =>
-        ({
-            ...val,
-            [name]: value,
-        }))
+        setInputValue
+            ({
+                ...inputvalue,
+                [name]: value,
+            })
     }
-
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -34,7 +34,6 @@ const Login = (props) => {
         else {
             props.alertFunction("Entered email is wrong", "Failed! :", "red");
         }
-
     }
 
 
@@ -45,7 +44,6 @@ const Login = (props) => {
                 <div className="heading">
                     <h2>Welcome to Login Form</h2>
                 </div>
-
                 <div className="input_Form">
                     <form onSubmit={handleLogin}>
                         <input className="input_field" type="text" value={inputvalue.email} name="email" onChange={handleChange} id="Email" required />
@@ -55,15 +53,13 @@ const Login = (props) => {
                         <label htmlFor="Password" className="lpassword" min="8" >Password
                         </label>
                         <button className="submit" type="Submit">Login </button>
-                        <button onClick={() => { return props.Switch_SignUp() }} className="reset submit " type="Reset" >SignUp</button >
+                        <Link to="/" ><button onClick={() => { return props.Switch_SignUp() }} className="reset submit " type="Reset" >SignUp</button >
+                        </Link>
                     </form>
                 </div>
                 <div className="other" >
                     Forget Your Password
                 </div>
-
-
-
             </div>
         </>
     )
